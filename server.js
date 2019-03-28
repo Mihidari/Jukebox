@@ -29,4 +29,4 @@ io.on('connection', function (socket) {
     socket.emit('id_video', streaming.id);
     });
 
-
+module.exports = app;
