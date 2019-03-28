@@ -3,27 +3,202 @@
     <head>
         <title>Jukebox</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/styles.css" type="text/css">
+        <link rel="stylesheet" type="text/CSS" href="style.css">
         <link rel="shortcut icon" href="/favicon.ico"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div id="main">
-            <div id="playlist">
-                <h1 id="venir"></h1>
-                <span id="thumbnail">
-                </span>
-            </div>
             <div id="central">
                 <h1 class="titre">(J u k e b o x)</h1>
-                <!--La div id="player" à pas changer, elle remplacera votre iframe qui contient votre player,
-                    pour les modif de taille du player ../public/player.js-->
                 <div id="player"></div>
                 <div id="chat"></div>
             </div>
-            <div id="channel">
+
+            <div class="grid-container">
+                <div class="grid-item1"></div>
+                <div class="grid-item2">
+                    <h1>Jukebox</h1>
+                </div>
+                <div class="grid-item3"></div>
+                <div class="grid-item4"></div>
+                <div class="grid-item5">
+                    <h2>Choisis ton son, le DJ c'est toi</h2>
+                </div>
+                <div class="grid-item6"></div>
+                <div class="grid-item7"></div>
+                <div class="grid-item8">
+                    <button><i id="pouceV" type="button" onclick="votepour()" class="fas fa-thumbs-up"></i></button>
+                    <meter id="barre" name="barre_de_soulance" value="3" max="8" min="0">
+                    </meter>
+                    <button><i id="pouceR" type="button" onclick="votecontre()" class="fas fa-thumbs-down"></i></button>
+                </div>
+                <div class="grid-item9">
+                    <form method="post" action="  " >
+                        <input name="identifiant" type="text" placeholder="identifiant"/>
+                        <br/>
+                        <input name="mot_de_passe" type="password" placeholder="mot de passe" />
+                    </form>
+                </div>
+                <div class="grid-item10">                    
+                        playlist
+                </div>
+
+                <div class="grid-item11">
+                <div id="player"></div>
+                </div>
+
+                <div class="grid-item12">
+                    utilisateurs
+                </div>
+                
+                <div class="grid-item13">
+                    <form action="nouvelleVideo.nj" method="POST">
+                    <div class="url-video">
+                            <input name="urlNouvelleVideo" type="text" placeholder="Entrer l'url de la vidéo Youtube" size="75">
+                        </div>
+                        <div class="categorie-video">
+                            <select class="categorie-video" id="cat-video" required>
+                                <option default>Genre 1</option>
+                                <option value="Alternatif">Alternatif</option>
+                                <option value="Ambiance">Ambiance</option>
+                                <option value="Animaion">Animation</option>
+                                <option value="Balade">Balade</option>
+                                <option value="Bande Originale">Bande Originale (BO)</option>
+                                <option value="Blues">Blues</option>
+                                <option value="Bounce">Bounce</option>
+                                <option value="Classique">Classique</option>
+                                <option value="Country">Country</option>
+                                <option value="Dance">Dance</option>
+                                <option value="Dancehall">Dancehall</option>
+                                <option value="Disco">Disco</option>
+                                <option value="Dubstep">Dubstep</option>
+                                <option value="Electro">Electro</option>
+                                <option value="Folk">Folk</option>
+                                <option value="Funk">Funk</option>
+                                <option value="Generrique">Générique</option>
+                                <option value="Hard Rock">Hard Rock</option>
+                                <option value="HeMetalavy">Heavy Metal</option>
+                                <option value="hip-Hop">Hip-Hop</option>
+                                <option value="House">House</option>
+                                <option value="Humour">Humour</option>
+                                <option value="Instrumentale">Instrumentale</option>
+                                <option value="Jazz">Jazz</option>
+                                <option value="Jazz Fusion">Jazz Fusion</option>
+                                <option value="Punk">Punk</option>
+                                <option value="Pop">Pop</option>
+                                <option value="Rai">Raï</option>
+                                <option value="Rap">Rap</option>
+                                <option value="Reggae">Reggae</option>
+                                <option value="RnB">Rnb</option>
+                                <option value="Rock">Rock</option>
+                                <option value="Salsa">Salsa</option>
+                                <option value="Samba">Samba</option>
+                                <option value="Ska">Ska</option>
+                                <option value="Soul">Soul</option>
+                                <option value="Techno">Techno</option>
+                                <option value="Trans">Trans</option>
+                                <option value="Variete">Variété</option>
+                                <option value="Zouk">Zouk</option>
+                                <option value="Zumba">Zumba</option>
+                            </select>
+                            <select class="categorie-video" id="cat-video">
+                                    <option default>Genre 2</option>
+                                    <option value="Alternatif">Alternatif</option>
+                                    <option value="Ambiance">Ambiance</option>
+                                    <option value="Animaion">Animation</option>
+                                    <option value="Balade">Balade</option>
+                                    <option value="Bande Originale">Bande Originale (BO)</option>
+                                    <option value="Blues">Blues</option>
+                                    <option value="Bounce">Bounce</option>
+                                    <option value="Classique">Classique</option>
+                                    <option value="Country">Country</option>
+                                    <option value="Dance">Dance</option>
+                                    <option value="Dancehall">Dancehall</option>
+                                    <option value="Disco">Disco</option>
+                                    <option value="Dubstep">Dubstep</option>
+                                    <option value="Electro">Electro</option>
+                                    <option value="Folk">Folk</option>
+                                    <option value="Funk">Funk</option>
+                                    <option value="Generrique">Générique</option>
+                                    <option value="Hard Rock">Hard Rock</option>
+                                    <option value="HeMetalavy">Heavy Metal</option>
+                                    <option value="hip-Hop">Hip-Hop</option>
+                                    <option value="House">House</option>
+                                    <option value="Humour">Humour</option>
+                                    <option value="Instrumentale">Instrumentale</option>
+                                    <option value="Jazz">Jazz</option>
+                                    <option value="Jazz Fusion">Jazz Fusion</option>
+                                    <option value="Punk">Punk</option>
+                                    <option value="Pop">Pop</option>
+                                    <option value="Rai">Raï</option>
+                                    <option value="Rap">Rap</option>
+                                    <option value="Reggae">Reggae</option>
+                                    <option value="RnB">Rnb</option>
+                                    <option value="Rock">Rock</option>
+                                    <option value="Salsa">Salsa</option>
+                                    <option value="Samba">Samba</option>
+                                    <option value="Ska">Ska</option>
+                                    <option value="Soul">Soul</option>
+                                    <option value="Techno">Techno</option>
+                                    <option value="Trans">Trans</option>
+                                    <option value="Variete">Variété</option>
+                                    <option value="Zouk">Zouk</option>
+                                    <option value="Zumba">Zumba</option>
+                            </select>
+                            <select class="categorie-video" id="cat-video">
+                                        <option default>Genre 3</option>
+                                        <option value="Alternatif">Alternatif</option>
+                                        <option value="Ambiance">Ambiance</option>
+                                        <option value="Animaion">Animation</option>
+                                        <option value="Balade">Balade</option>
+                                        <option value="Bande Originale">Bande Originale (BO)</option>
+                                        <option value="Blues">Blues</option>
+                                        <option value="Bounce">Bounce</option>
+                                        <option value="Classique">Classique</option>
+                                        <option value="Country">Country</option>
+                                        <option value="Dance">Dance</option>
+                                        <option value="Dancehall">Dancehall</option>
+                                        <option value="Disco">Disco</option>
+                                        <option value="Dubstep">Dubstep</option>
+                                        <option value="Electro">Electro</option>
+                                        <option value="Folk">Folk</option>
+                                        <option value="Funk">Funk</option>
+                                        <option value="Generrique">Générique</option>
+                                        <option value="Hard Rock">Hard Rock</option>
+                                        <option value="HeMetalavy">Heavy Metal</option>
+                                        <option value="hip-Hop">Hip-Hop</option>
+                                        <option value="House">House</option>
+                                        <option value="Humour">Humour</option>
+                                        <option value="Instrumentale">Instrumentale</option>
+                                        <option value="Jazz">Jazz</option>
+                                        <option value="Jazz Fusion">Jazz Fusion</option>
+                                        <option value="Punk">Punk</option>
+                                        <option value="Pop">Pop</option>
+                                        <option value="Rai">Raï</option>
+                                        <option value="Rap">Rap</option>
+                                        <option value="Reggae">Reggae</option>
+                                        <option value="RnB">Rnb</option>
+                                        <option value="Rock">Rock</option>
+                                        <option value="Salsa">Salsa</option>
+                                        <option value="Samba">Samba</option>
+                                        <option value="Ska">Ska</option>
+                                        <option value="Soul">Soul</option>
+                                        <option value="Techno">Techno</option>
+                                        <option value="Trans">Trans</option>
+                                        <option value="Variete">Variété</option>
+                                        <option value="Zouk">Zouk</option>
+                                        <option value="Zumba">Zumba</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            
+                <div class="grid-item14">
+                    <input name="ajouter" type="submit" value="Ajouter"/>
+                </div> 
             </div>
-        </div>
-        <!--Script necessaire-->
+            <script type="text/javascript" src="script.js"></script>
+            
         <script src="/socket.io/socket.io.js"></script>
         <script>
         var socket = io.connect('http://localhost:8080');
