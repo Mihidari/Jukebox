@@ -4,6 +4,13 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var favicon = require('serve-favicon');
 var streaming = require('./lib/streaming');
+var adr = 'https://www.youtube.com/watch?v=am1X4Md1ShA';
+var url = require("url");
+var q = url.parse(adr, true);
+
+var qDataId = q.query.v;
+console.log(qDataId);
+
 
 //On lance le serveur sur le port 8080 de la machine
 server.listen(8080);
