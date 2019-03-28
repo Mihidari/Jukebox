@@ -15,12 +15,15 @@
             </div>
             <div id="central">
                 <h1 class="titre">(J u k e b o x)</h1>
+                <!--La div id="player" à pas changer, elle remplacera votre iframe qui contient votre player,
+                    pour les modif de taille du player ../public/player.js-->
                 <div id="player"></div>
                 <div id="chat"></div>
             </div>
             <div id="channel">
             </div>
         </div>
+        <!--Script necessaire-->
         <script src="/socket.io/socket.io.js"></script>
         <script>
         var socket = io.connect('http://localhost:8080');

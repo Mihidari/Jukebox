@@ -7,8 +7,10 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //Déclaration et affichage du player youtube
 function onYouTubeIframeAPIReady() {
     var player = new YT.Player('player', {
+        //Front du player
         height: '340',
         width: '60%',
+        //Back
         videoId: identifiant[0],
         playerVars: { 'autoplay': 1, 'controls': 0, 'disablekb': 0, 'rel': 0, 'modestbranding': 1, 'showinfo': 0, 'start' : timecode },
         events: {

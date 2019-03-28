@@ -1,3 +1,5 @@
+/*Front: vous pouvez tout changer le #player compris sauf la propriété 'pointer-events: none;'*/
+
 @font-face {
     font-family: "the_juke_box";
     src: url("fonts/The_Juke_Box-FFP.eot");
