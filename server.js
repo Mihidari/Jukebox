@@ -27,6 +27,21 @@ app.get('/', function(req, res) {
     res.render('index.ejs');
 });
 
+
+//Pour le form
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
+
+//Récupération du formulaire
+app.post("/", function (req, res) {
+    var objs = { urll: req.body.url.urll}; // exemple a modifié
+});
+
 //Evenement "connexion" du client et envoi des sockets de données vidéo
 io.on('connection', function (socket) {
     console.log('Un client est connecté !');
@@ -36,4 +51,3 @@ io.on('connection', function (socket) {
     socket.emit('id_video', streaming.id);
     });
 
-module.exports = app;
