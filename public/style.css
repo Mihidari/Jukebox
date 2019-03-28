@@ -1,5 +1,5 @@
    body {
-    background-image: url(/public/fond.gif);
+    background-image: url('/fond.gif');
     margin: 0;
     padding:0;
   }
@@ -175,4 +175,11 @@ h1{
 h2{
   color: violet;
   text-align: center;
+}
+
+#player {
+  text-align: center;
+  margin: auto;
+  display: block;
+  pointer-events: none;
 }
