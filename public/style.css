@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Mr+Dafoe);
+
    body {
     background-image: url('/fond.gif');
     margin: 0;
@@ -16,8 +18,19 @@
 
   }
 
-  .grid-item2{
-
+  .grid-item2 h1{
+    text-align:center;
+    margin: 0px;
+    font-family: 'Mr Dafoe', cursive;
+    font-size: 3em;
+    color: #5ef4ec ;
+    transform:rotate(-2deg);
+    -ms-transform:rotate(-2deg); 
+    -webkit-transform:rotate(-2deg); 
+    -webkit-text-stroke: 2px #5ef4ec;
+    -webkit-filter: drop-shadow(2px 2px 20px #5ef4ec);
+    z-index: 20;
+    letter-spacing: 10px;
   }
 
   .grid-item3{
@@ -28,8 +41,22 @@
     
   }
 
-  .grid-item5{
-    
+  .grid-item5 h3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Caveat', cursive;
+    font-size:1.6em;
+    text-align:center;
+    margin: 0px;
+    color: #5ef4ec ;
+    transform:rotate(0deg);
+    -ms-transform:rotate(0deg); 
+    -webkit-transform:rotate(0deg);
+    -webkit-text-stroke: 1px #5ef4ec;
+    -webkit-filter: drop-shadow(2px 2px 20px #5ef4ec);
+    z-index: 20;
+    letter-spacing: 10px;
   }
 
   .grid-item6{
@@ -47,9 +74,25 @@
     align-items: center;
   }
 
+  /*image pouce */
+.grid-item8 i{
+  font-size: 4em ;
+  margin:20px;
+}
+
   .grid-item9{
-    
+   display: flex;
+   flex-direction: column;
+   align-items: center;
   }
+
+  .grid-item9 input{
+    border: 2px solid black;
+    border-radius:10px;
+    margin-bottom:0px;
+    padding:2px;
+  }
+
 /*block playlist*/
   .grid-item10, .grid-item12{
     display:flex;
@@ -61,18 +104,25 @@
     margin-left: 1em;
     margin-right: 1em;
     margin-bottom: 1em;
-    background-color: #26004d;
-    
+    background-color: #2d2b30a4;
   }
+
+  /*image des videos */
+.grid-item10 img{
+  height: 90px;
+  width:160px;
+  margin-top: 10px;
+  border-radius:50px;
+  border: 2px solid black;
+}
+
 /*block video*/
   .grid-item11{
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .grid-item12{
-
-  }
+  
 /*url et genre */
   .grid-item13 {
     grid-column: 1 / 3;
@@ -88,21 +138,20 @@
     align-items: center;
   }
 
+  .grid-item14 input{
+    width:150px;
+    height:50px;
+    padding:5px;
+    border: 2px solid black;
+    border-radius:10px;
+  }
 
 /*utilisateur et playlist*/
 textarea{
  height:90%;
  width:90%;
 }
-/*image des videos */
-.grid-item10 img{
-  height: 90px;
-  width:160px;
-  margin-top: 10px;
-  border-radius:50px;
-  border: 2px solid black;
 
-}
 
 .categorie-video{
   display: flex;
@@ -125,36 +174,14 @@ textarea{
   padding:0px;
 }
 
-.grid-item14 input{
-  width:150px;
-  height:50px;
-  padding:5px;
-  border: 2px solid black;
-  border-radius:10px;
-
-}
-
-.grid-item9 input{
-  border: 2px solid black;
-  border-radius:10px;
-  margin-bottom:0px;
-  padding:2px;
-}
-
 /*barre de soulance*/
 progress{
   width:40%;
   height:30px;
   border: 2px solid black;
   color:red;
-
 }
 
-/*image pouce */
-.grid-item8 i{
-  font-size: 4em ;
-  margin:20px;
-}
 #pouceV{
   color:green;
 }
@@ -167,16 +194,6 @@ button {
   background-color: transparent;
   border: none;
   outline: 0;
-}
-
-h1{
-  color: orange;
-  text-align: center;
-}
-
-h2{
-  color:orange;
-  text-align: center;
 }
 
 #player {
