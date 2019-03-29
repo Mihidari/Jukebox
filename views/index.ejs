@@ -36,6 +36,7 @@
                 </div>
                 <div class="grid-item10">                    
                         playlist
+                <span id="thumbnail"></span>
                 </div>
 
                 <div class="grid-item11">
@@ -47,9 +48,9 @@
                 </div>
                 
                 <div class="grid-item13">
-                    <form action="nouvelleVideo.nj" method="POST">
+                    <form id="nouvellevideo">
                     <div class="url-video">
-                            <input name="urlNouvelleVideo" type="text" placeholder="Entrer l'url de la vidéo Youtube" size="75">
+                            <input name="video" type="text" placeholder="Entrer l'url de la vidéo Youtube" size="75">
                         </div>
                         <div class="categorie-video">
                             <select class="categorie-video" id="cat-video" required>
@@ -185,12 +186,11 @@
                                         <option value="Zumba">Zumba</option>
                             </select>
                         </div>
-                    </form>
                 </div>
-            
                 <div class="grid-item14">
-                    <input name="ajouter" type="submit" value="Ajouter"/>
+                    <input type="submit" value="ajouter"/>
                 </div> 
+            </form>
             </div>
             <script type="text/javascript" src="script.js"></script>
             
