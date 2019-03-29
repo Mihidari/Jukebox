@@ -58,7 +58,9 @@
     overflow-y:scroll;
 
     border: 2px solid black;
-    margin-left:10px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
     background-color: #26004d;
     
   }
@@ -140,7 +142,7 @@ textarea{
 }
 
 /*barre de soulance*/
-meter{
+progress{
   width:40%;
   height:30px;
   border: 2px solid black;
@@ -168,12 +170,12 @@ button {
 }
 
 h1{
-  color: green;
+  color: orange;
   text-align: center;
 }
 
 h2{
-  color: violet;
+  color:orange;
   text-align: center;
 }
 
@@ -182,4 +184,9 @@ h2{
   margin: auto;
   display: block;
   pointer-events: none;
+}
+
+::-webkit-progress-value {
+  background: linear-gradient(to right, orange, red);
+
 }
