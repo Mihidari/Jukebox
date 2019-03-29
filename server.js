@@ -4,14 +4,8 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var favicon = require('serve-favicon');
 var streaming = require('./lib/streaming');
-var adr = 'https://www.youtube.com/watch?v=am1X4Md1ShA';
 var url = require("url");
-var q = url.parse(adr, true);
-var duration = require('./lib/video_duration')
-
-var qDataId = q.query.v;
-console.log(qDataId);
-duration('qfqA1sTKhmw');
+var videoData = require('./lib/video_duration');
 
 //On lance le serveur sur le port 8080 de la machine
 server.listen(8080);
@@ -24,8 +18,20 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 /*TODO:
 Création des modules de routing indépendants
 */
+var newVideo = "";
 app.get('/', function(req, res) {
-    res.render('index.ejs');
+    newVideo = req.query.video;
+    if (newVideo != undefined) {
+        var DataId = url.parse(newVideo, true).query.v;
+        console.log(DataId);
+        streaming.id.push(DataId);
+        videoData(DataId);
+        res.redirect( req.originalUrl.split("?").shift() );
+    }
+    else {
+        res.render('index.ejs');
+    }
+    
 });
 
 
@@ -33,7 +39,7 @@ app.get('/', function(req, res) {
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
 
 app.use(bodyParser.json());
@@ -41,7 +47,8 @@ app.use(bodyParser.json());
 //Récupération du formulaire
 app.post("/nouvelleVideo.nj", function (req, res) {
     //var objs = { urll: req.body.url.urll}; // exemple a modifié
-    console.log(req.body.urlNouvelleVideo);
+    var q = url.parse(req.body.urlNouvelleVideo, true);
+    console.log(q.query.v);
 });
 
 //Evenement "connexion" du client et envoi des sockets de données vidéo
