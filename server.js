@@ -7,9 +7,9 @@ var streaming = require('./lib/streaming');
 var url = require("url");
 var videoData = require('./lib/video_duration');
 var barre = 0;
-var mongo = require('mongodb');
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/mydb";
+//var mongo = require('mongodb');
+//var MongoClient = require('mongodb').MongoClient;
+//var urlmongo = "mongodb://localhost:27017/mydb";
 
 //On lance le serveur sur le port 8080 de la machine
 server.listen(8080);
@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-//Connection MongoDb
+/*//Connection MongoDb
 MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
@@ -79,6 +79,7 @@ MongoClient.connect(url, function(err, db) {
         }
     });
 });
+*/
 
 //Evenement "connexion" du client et envoi des sockets de données vidéo
 io.on('connection', function (socket) {
