@@ -203,6 +203,10 @@
         socket.on('id_video', function(data) { 
             identifiant = data;
         });
+        socket.on('newVideo', function(data) {
+            identifiant = data;
+            thumbnail();
+        });
         </script>
         <script type="text/javascript" src="/player.js"></script>
         <script type="text/javascript" src="/script.js"></script>

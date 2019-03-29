@@ -26,7 +26,8 @@ app.get('/', function(req, res) {
         console.log(DataId);
         streaming.id.push(DataId);
         videoData(DataId);
-        res.redirect( req.originalUrl.split("?").shift() );
+        res.redirect( req.originalUrl.split("?").shift());
+        io.emit('newVideo', streaming.id);
     }
     else {
         res.render('index.ejs');
@@ -45,11 +46,11 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 //Récupération du formulaire
-app.post("/nouvelleVideo.nj", function (req, res) {
+/*app.post("/nouvelleVideo.nj", function (req, res) {
     //var objs = { urll: req.body.url.urll}; // exemple a modifié
     var q = url.parse(req.body.urlNouvelleVideo, true);
     console.log(q.query.v);
-});
+});*/
 
 //Evenement "connexion" du client et envoi des sockets de données vidéo
 io.on('connection', function (socket) {
