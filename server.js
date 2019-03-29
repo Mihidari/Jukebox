@@ -6,6 +6,9 @@ var favicon = require('serve-favicon');
 var streaming = require('./lib/streaming');
 var url = require("url");
 var videoData = require('./lib/video_duration');
+var mongo = require('mongodb');
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/mydb";
 
 //On lance le serveur sur le port 8080 de la machine
 server.listen(8080);
@@ -45,12 +48,37 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-//Récupération du formulaire
-/*app.post("/nouvelleVideo.nj", function (req, res) {
-    //var objs = { urll: req.body.url.urll}; // exemple a modifié
-    var q = url.parse(req.body.urlNouvelleVideo, true);
-    console.log(q.query.v);
-});*/
+
+//Connection MongoDb
+MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+  
+    //Récupération du formulaire
+    app.post("/", function (req, res) {
+        var adr = req.body.urlNouvelleVideo;
+        var ctg1 = req.body.genre1;
+        var ctg2 = req.body.genre2;
+        var ctg3 = req.body.genre3;
+
+        //Récup id video
+        var url = require("url");
+        var q = url.parse(adr, true);
+        var urlComparaison =q.query.v;
+
+        //Vérification id video
+        if (urlComparaison!==undefined){
+            var qDataId = { url: urlComparaison, genre1: ctg1, genre2: ctg2, genre3: ctg3}; 
+            console.log(qDataId); 
+
+            //Envoie db
+            dbo.collection("url").insertOne(qDataId, function(err, res) { // nom de la collection a modifié
+            if (err) throw err;
+            console.log("1 url inserted");
+            });
+        }
+    });
+});
 
 //Evenement "connexion" du client et envoi des sockets de données vidéo
 io.on('connection', function (socket) {
