@@ -21,7 +21,7 @@ Création des modules de routing indépendants
 var newVideo = "";
 app.get('/', function(req, res) {
     newVideo = req.query.video;
-    if (newVideo != undefined) {
+    if (newVideo != undefined && newVideo != '') {
         var DataId = url.parse(newVideo, true).query.v;
         console.log(DataId);
         streaming.id.push(DataId);
