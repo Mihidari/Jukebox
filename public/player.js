@@ -31,7 +31,7 @@ function thumbnail() {
     document.getElementById("thumbnail").innerHTML = "<img src='https://img.youtube.com/vi/" + identifiant[1] + "/maxresdefault.jpg'><img src='https://img.youtube.com/vi/" + identifiant[2] + "/maxresdefault.jpg'><img src='https://img.youtube.com/vi/" + identifiant[3] + "/maxresdefault.jpg'><img src='https://img.youtube.com/vi/" + identifiant[4] + "/maxresdefault.jpg'>";
 }
 
-//Quand la vidéo est fini le player charge la prochainne vidéo
+//Quand la vidéo est fini le player charge la prochaine vidéo
 function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
         event.target.loadVideoById(identifiant[1]);
@@ -40,5 +40,3 @@ function onPlayerStateChange(event) {
         thumbnail();
      }
 }
-
-

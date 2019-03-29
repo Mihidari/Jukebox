@@ -6,6 +6,7 @@ var favicon = require('serve-favicon');
 var streaming = require('./lib/streaming');
 var url = require("url");
 var videoData = require('./lib/video_duration');
+var barre = 0;
 
 //On lance le serveur sur le port 8080 de la machine
 server.listen(8080);
@@ -23,7 +24,6 @@ app.get('/', function(req, res) {
     newVideo = req.query.video;
     if (newVideo != undefined && newVideo != '') {
         var DataId = url.parse(newVideo, true).query.v;
-        console.log(DataId);
         streaming.id.push(DataId);
         videoData(DataId);
         res.redirect( req.originalUrl.split("?").shift());
@@ -59,5 +59,15 @@ io.on('connection', function (socket) {
     console.log("Timecode vidéo en cours: " + streaming.timecode );
     socket.emit('timecode', streaming.timecode );
     socket.emit('id_video', streaming.id);
+    socket.vote = false;
+    socket.emit('socket_vote', socket.vote);
+    socket.emit('progress_barre', barre);
+    socket.on("vote", function(data) {
+        barre = data;
+        console.log(barre);
+        socket.vote = true;
+        socket.emit('socket_vote', socket.vote);
+        socket.broadcast.emit('newVote', data)
     });
+});
 

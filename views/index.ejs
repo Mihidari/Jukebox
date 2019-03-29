@@ -24,7 +24,7 @@
                 <div class="grid-item7"></div>
                 <div class="grid-item8">
                     <button><i id="pouceV" type="button" onclick="votepour()" class="fas fa-thumbs-up"></i></button>
-                    <progress id="barre" name="barre_de_soulance" value="3" max="8" min="0">
+                    <progress id="barre" name="barre_de_soulance" value="0" max="8" min="0">
                     </progress>
                     <button><i id="pouceR" type="button" onclick="votecontre()" class="fas fa-thumbs-down"></i></button>
                 </div>
@@ -195,23 +195,9 @@
                 </div> 
             </form>
             </div>
-            <script type="text/javascript" src="script.js"></script>
-            
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-        var socket = io.connect('http://localhost:8080');
-        socket.on('timecode', function (data) {
-            timecode = data;
-        });
-        socket.on('id_video', function(data) { 
-            identifiant = data;
-        });
-        socket.on('newVideo', function(data) {
-            identifiant = data;
-            thumbnail();
-        });
-        </script>
+        <script type="text/javascript" src="/socket.js"></script>
         <script type="text/javascript" src="/player.js"></script>
-        <script type="text/javascript" src="/script.js"></script>
+        <script type="text/javascript" src="/barre.js"></script>
     </body>
 </html>
