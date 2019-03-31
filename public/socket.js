@@ -19,3 +19,7 @@ socket.on('progress_barre', function(data) {
 socket.on('newVote', function(data) {
     document.getElementById("barre").value = data;
 });
+socket.on('next', function() {
+    onPlayerStateChange('next');
+    socket.emit('session');
+});

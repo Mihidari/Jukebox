@@ -93,10 +93,25 @@ io.on('connection', function (socket) {
     socket.emit('progress_barre', barre);
     socket.on("vote", function(data) {
         barre = data;
-        console.log(barre);
-        socket.vote = true;
+        if (data != 0) {
+            socket.vote = true;
+        }
         socket.emit('socket_vote', socket.vote);
-        socket.broadcast.emit('newVote', data)
+        socket.broadcast.emit('newVote', data);
+    });
+    socket.on("next", function() {
+        socket.broadcast.emit('next');
+        streaming.timecode = 0;
+        socket.vote = false;
+        //A modifier quand base de données op
+        streaming.duration.push(streaming.duration[0]);
+        streaming.duration.shift();
+        streaming.id.push(streaming.id[0]);
+        streaming.id.shift();
+    });
+    socket.on('session', function() {
+        socket.vote = false;
+        socket.emit('socket_vote', socket.vote);
     });
 });
 
