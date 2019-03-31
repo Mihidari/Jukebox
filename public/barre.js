@@ -13,7 +13,9 @@ function votecontre(){
                 barre = document.getElementById("barre").value;
                 if (barre == 8) {
                         barre = 0;
-                        player.loadVideoById('gQ5gtInauiI');
+                        document.getElementById("barre").value = barre;
+                        onPlayerStateChange('next');
+                        socket.emit("next");
                 }
                 socket.emit("vote", barre);
         }
